@@ -1,4 +1,4 @@
-package com.choncoder.googlemaps;
+package com.choncoder.whatsfordinner;
 
 import android.util.Log;
 

@@ -1,4 +1,4 @@
-package com.choncoder.googlemaps;
+package com.choncoder.whatsfordinner;
 
 import android.Manifest;
 import android.content.Intent;
@@ -24,7 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.choncoder.googlemaps.models.PlaceInfo;
+import com.choncoder.whatsfordinner.models.PlaceInfo;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -93,6 +93,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
 
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         Toast.makeText(this, "Map is ready", Toast.LENGTH_SHORT).show();
@@ -128,6 +129,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 data[1] = url;
                 Log.d("onClick: ", url);
 
+
                 restaurantFinder.execute(data);
                 chooseRestaurant.setEnabled(true);
                 chooseRestaurant.setVisibility(View.VISIBLE);
@@ -141,8 +143,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             public void onClick(View view) {
                 Log.d(TAG, "onClick: choose restaurant on click");
 
-                HashMap<String, String> pickRestaurant = new HashMap<>();
-                pickRestaurant = restaurantFinder.getGooglePlace();
+                HashMap<String, String> pickRestaurant = restaurantFinder.getGooglePlace();
                 HashMap<String, String> singleRest = new HashMap<>();
                 Object[] restaurantArray = pickRestaurant.keySet().toArray();
                 String key = (String) restaurantArray[new Random().nextInt(restaurantArray.length - 1)];
@@ -160,6 +161,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 mMap.addMarker(markerOptions);
             }
         });
+
 
     }
 
@@ -190,7 +192,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         restaurantsUrl.append("&radius=" + 16000);
         restaurantsUrl.append("&type=" + nearbyRestaurants);
         restaurantsUrl.append("&sensor=true");
-        restaurantsUrl.append("&key=" + "AIzaSyBTuwp22Beqmh_j_CrURGzBrc6YI4MEMSw");
+        restaurantsUrl.append("&key=" + "AIzaSyAdzbH-eIigzS4JvNB2jTxeePEeKKn6b-Y");
         Log.d("getUrl: ", restaurantsUrl.toString());
         return restaurantsUrl.toString();
     }

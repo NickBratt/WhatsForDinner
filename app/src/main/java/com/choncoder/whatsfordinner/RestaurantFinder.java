@@ -1,4 +1,4 @@
-package com.choncoder.googlemaps;
+package com.choncoder.whatsfordinner;
 
 import android.os.AsyncTask;
 import android.util.Log;
