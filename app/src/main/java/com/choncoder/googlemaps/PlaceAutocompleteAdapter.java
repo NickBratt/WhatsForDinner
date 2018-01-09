@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.choncoder.whatsfordinner;
+package com.choncoder.googlemaps;
 
 import android.content.Context;
 import android.graphics.Typeface;

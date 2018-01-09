@@ -1,4 +1,4 @@
-package com.choncoder.whatsfordinner.models;
+package com.choncoder.googlemaps.models;
 
 import android.net.Uri;
 

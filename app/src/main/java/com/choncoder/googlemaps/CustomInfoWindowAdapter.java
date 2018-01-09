@@ -1,4 +1,4 @@
-package com.choncoder.whatsfordinner;
+package com.choncoder.googlemaps;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,19 +19,19 @@ public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter{
 
     public CustomInfoWindowAdapter(Context mContext) {
         this.mContext = mContext;
-        mWindow = LayoutInflater.from(mContext).inflate(R.layout.custom_info_window, null);
+        mWindow = LayoutInflater.from(mContext).inflate(com.choncoder.googlemaps.R.layout.custom_info_window, null);
     }
 
     private void renderWindowText(Marker marker, View view){
         String title = marker.getTitle();
-        TextView tvTitle = view.findViewById(R.id.title);
+        TextView tvTitle = view.findViewById(com.choncoder.googlemaps.R.id.title);
 
         if (!title.equals("")){
             tvTitle.setText(title);
         }
 
         String snippet = marker.getSnippet();
-        TextView tvSnippet = view.findViewById(R.id.snippet);
+        TextView tvSnippet = view.findViewById(com.choncoder.googlemaps.R.id.snippet);
         if (!snippet.equals("")){
             tvSnippet.setText(snippet);
         }

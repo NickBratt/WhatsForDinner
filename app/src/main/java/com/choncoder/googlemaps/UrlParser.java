@@ -1,4 +1,4 @@
-package com.choncoder.whatsfordinner;
+package com.choncoder.googlemaps;
 
 import android.util.Log;
 
@@ -15,6 +15,8 @@ import java.net.URL;
 
 public class UrlParser {
 
+    private static final String TAG = "UrlParser";
+
     public String parseUrl(String urlParam) throws IOException {
         String data = "";
         InputStream inputStream = null;
@@ -27,6 +29,7 @@ public class UrlParser {
             urlConnection.connect();
             // read url data
             inputStream = urlConnection.getInputStream();
+            Log.d(TAG, "parseUrl: inputstream");
 
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuffer stringBuffer = new StringBuffer();
@@ -34,6 +37,7 @@ public class UrlParser {
             String line = "";
             while ((line = bufferedReader.readLine()) != null){
                 stringBuffer.append(line);
+                Log.d(TAG, "parseUrl: bufferedreader");
             }
 
             data = stringBuffer.toString();

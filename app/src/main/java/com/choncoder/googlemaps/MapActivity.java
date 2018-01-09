@@ -1,4 +1,4 @@
-package com.choncoder.whatsfordinner;
+package com.choncoder.googlemaps;
 
 import android.Manifest;
 import android.content.Intent;
@@ -24,7 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.choncoder.whatsfordinner.models.PlaceInfo;
+import com.choncoder.googlemaps.models.PlaceInfo;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -163,6 +163,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         });
 
 
+
     }
 
     @Override
@@ -173,14 +174,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
+        setContentView(com.choncoder.googlemaps.R.layout.activity_map);
 
-        searchText = findViewById(R.id.input_search);
-        gpsIcon = findViewById(R.id.gps);
-        mInfo = findViewById(R.id.place_info);
-        placePicker = findViewById(R.id.place_picker);
-        findNearbyRestaurants = findViewById(R.id.randRestaurant);
-        chooseRestaurant = findViewById(R.id.chooseRestaurant);
+        searchText = findViewById(com.choncoder.googlemaps.R.id.input_search);
+        gpsIcon = findViewById(com.choncoder.googlemaps.R.id.gps);
+        mInfo = findViewById(com.choncoder.googlemaps.R.id.place_info);
+        placePicker = findViewById(com.choncoder.googlemaps.R.id.place_picker);
+        findNearbyRestaurants = findViewById(com.choncoder.googlemaps.R.id.randRestaurant);
+        chooseRestaurant = findViewById(com.choncoder.googlemaps.R.id.chooseRestaurant);
 
         getLocationPermission();
 
@@ -192,7 +193,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         restaurantsUrl.append("&radius=" + 16000);
         restaurantsUrl.append("&type=" + nearbyRestaurants);
         restaurantsUrl.append("&sensor=true");
-        restaurantsUrl.append("&key=" + "AIzaSyAdzbH-eIigzS4JvNB2jTxeePEeKKn6b-Y");
+        restaurantsUrl.append("&key=" + "AIzaSyC6Vj_M4xMoi-xf_56DBeCipEKEnqkb9Hw");
         Log.d("getUrl: ", restaurantsUrl.toString());
         return restaurantsUrl.toString();
     }
@@ -384,7 +385,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     private void initMap(){
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(com.choncoder.googlemaps.R.id.map);
 
         mapFragment.getMapAsync(MapActivity.this);
     }

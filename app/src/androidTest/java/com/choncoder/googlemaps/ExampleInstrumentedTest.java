@@ -1,4 +1,4 @@
-package com.choncoder.whatsfordinner;
+package com.choncoder.googlemaps;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

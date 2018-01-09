@@ -1,4 +1,4 @@
-package com.choncoder.whatsfordinner;
+package com.choncoder.googlemaps;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(com.choncoder.googlemaps.R.layout.activity_main);
 
         if (isServicesOK()){
             init();
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
-        Button btnMap = findViewById(R.id.mapId);
+        Button btnMap = findViewById(com.choncoder.googlemaps.R.id.mapId);
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
