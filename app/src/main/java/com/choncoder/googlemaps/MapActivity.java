@@ -51,9 +51,7 @@ import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Nick on 12/21/2017.
@@ -89,7 +87,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private Marker mMarker;
     private double latitude;
     private double longitude;
-    private RestaurantFinder restaurantFinder = new RestaurantFinder();
+    //private RestaurantFinder restaurantFinder = new RestaurantFinder();
 
 
 
@@ -130,6 +128,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 Log.d("onClick: ", url);
 
 
+                RestaurantFinder restaurantFinder = new RestaurantFinder();
                 restaurantFinder.execute(data);
                 chooseRestaurant.setEnabled(true);
                 chooseRestaurant.setVisibility(View.VISIBLE);
@@ -138,6 +137,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             }
         });
 
+        /*
         chooseRestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -160,7 +160,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 markerOptions.title(placeName + " : " + vicinity);
                 mMap.addMarker(markerOptions);
             }
-        });
+        }); */
 
 
 

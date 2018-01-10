@@ -21,14 +21,8 @@ public class RestaurantFinder extends AsyncTask<Object, String, String> {
     private static final String TAG = "RestaurantFinder";
 
     private String placesData;
-    private HashMap<String, String> googlePlace = new HashMap<>();
-
-    public HashMap<String, String> getGooglePlace() {
-        return googlePlace;
-    }
-
-    GoogleMap mMap;
-    String url;
+    private GoogleMap mMap;
+    private String url;
 
 
     @Override
@@ -50,7 +44,7 @@ public class RestaurantFinder extends AsyncTask<Object, String, String> {
     @Override
     protected void onPostExecute(String s) {
         Log.d(TAG, "onPostExecute: Entered");
-        List<HashMap<String, String>> nearbyRestaurants = null;
+        List<HashMap<String, String>> nearbyRestaurants;
         DataParser dataParser = new DataParser();
         nearbyRestaurants = dataParser.parse(s);
         ShowNearbyRestaurants(nearbyRestaurants);
@@ -61,7 +55,7 @@ public class RestaurantFinder extends AsyncTask<Object, String, String> {
         for (int i = 0; i < nearbyRestaurants.size(); i++){
             Log.d(TAG, "ShowNearbyRestaurants: method called");
             MarkerOptions markerOptions = new MarkerOptions();
-            googlePlace = nearbyRestaurants.get(i);
+            HashMap<String, String> googlePlace = nearbyRestaurants.get(i);
             double lat = Double.parseDouble(googlePlace.get("lat"));
             double lng = Double.parseDouble(googlePlace.get("lng"));
             String placeName = googlePlace.get("place_name");
