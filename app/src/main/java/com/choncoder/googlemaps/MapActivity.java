@@ -87,7 +87,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private Marker mMarker;
     private double latitude;
     private double longitude;
-    //private RestaurantFinder restaurantFinder = new RestaurantFinder();
+
+
 
 
 
@@ -124,47 +125,35 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 String url = getUrl(latitude, longitude, "restaurant");
                 Object[] data = new Object[2];
                 data[0] = mMap;
+                System.out.println(url);
                 data[1] = url;
-                Log.d("onClick: ", url);
 
-
-                RestaurantFinder restaurantFinder = new RestaurantFinder();
+                RestaurantFinder restaurantFinder = new RestaurantFinder(0);
                 restaurantFinder.execute(data);
                 chooseRestaurant.setEnabled(true);
                 chooseRestaurant.setVisibility(View.VISIBLE);
                 Toast.makeText(MapActivity.this, "Nearby Restaurants", Toast.LENGTH_LONG).show();
-
             }
         });
 
-        /*
+
         chooseRestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: choose restaurant on click");
-
-                HashMap<String, String> pickRestaurant = restaurantFinder.getGooglePlace();
-                HashMap<String, String> singleRest = new HashMap<>();
-                Object[] restaurantArray = pickRestaurant.keySet().toArray();
-                String key = (String) restaurantArray[new Random().nextInt(restaurantArray.length - 1)];
-                String value = pickRestaurant.get(key);
-                mMap.clear();
-                MarkerOptions markerOptions = new MarkerOptions();
-                singleRest.put(key, value);
-                double lat = Double.parseDouble(singleRest.get("lat"));
-                double lng = Double.parseDouble(singleRest.get("lng"));
-                String placeName = singleRest.get("place_name");
-                String vicinity = singleRest.get("vicinity");
-                LatLng latLng = new LatLng(lat, lng);
-                markerOptions.position(latLng);
-                markerOptions.title(placeName + " : " + vicinity);
-                mMap.addMarker(markerOptions);
+                String url = getUrl(latitude, longitude, "restaurant");
+                Object[] data = new Object[2];
+                data[0] = mMap;
+                data[1] = url;
+                RestaurantFinder restaurantFinder = new RestaurantFinder(1);
+                restaurantFinder.execute(data);
+                Toast.makeText(MapActivity.this, "Enjoy!", Toast.LENGTH_LONG).show();
             }
-        }); */
-
-
+        });
 
     }
+
+
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
