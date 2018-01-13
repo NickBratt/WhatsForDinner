@@ -89,7 +89,7 @@ public class RestaurantFinder extends AsyncTask<Object, String, String> {
             mMap.addMarker(markerOptions);
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(5f));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15f));
         } else {
             System.out.println("Not valid input for constructor.");
         }
