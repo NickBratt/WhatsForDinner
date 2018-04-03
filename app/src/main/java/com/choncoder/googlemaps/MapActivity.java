@@ -1,6 +1,7 @@
 package com.choncoder.googlemaps;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -17,6 +18,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -257,7 +259,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             }
         });
 
-        hideKeyBoard();
+        hideSoftKeyboard();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -336,8 +338,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.addMarker(options);
         }
 
-        hideKeyBoard();
+        hideSoftKeyboard();
+    }
 
+    private void hideSoftKeyboard(){
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(searchText.getWindowToken(), 0);
     }
 
     private void moveCamera(LatLng latLng, float zoom, PlaceInfo placeInfo){
@@ -369,8 +375,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.addMarker(new MarkerOptions().position(latLng));
         }
 
-        hideKeyBoard();
-
+        hideSoftKeyboard();
     }
 
     private void initMap(){
@@ -425,7 +430,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private AdapterView.OnItemClickListener autoCompleteListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            hideKeyBoard();
+
+            hideSoftKeyboard();
 
             final AutocompletePrediction item = placeAutocompleteAdapter.getItem(i);
             final String placeId = item.getPlaceId();

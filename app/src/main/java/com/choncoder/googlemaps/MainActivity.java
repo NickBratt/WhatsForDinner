@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Init Map. Only called after google services has been checked
     private void init(){
         Button btnMap = findViewById(com.choncoder.googlemaps.R.id.mapId);
         btnMap.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    Checks google services version to see if compatible.
+    If not compatible app will not be useful
+    */
     public boolean isServicesOK(){
         Log.d(TAG, "isServicesOK: Checking google services version");
 
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
             // error in version
-            Log.d(TAG, "isServicesOK: an error has occured but we can fix it");
+            Log.d(TAG, "isServicesOK: an error has occurred");
             Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MainActivity.this, available, ERROR_DIALOG_REQUEST);
             dialog.show();
         } else {
